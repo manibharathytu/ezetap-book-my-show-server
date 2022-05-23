@@ -14,6 +14,6 @@ Open terminal and enter following commands.
 ---
 
 
-***Pre requisite:***
+**Pre requisite:**
 
 node v14.15.5
