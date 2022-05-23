@@ -2,7 +2,7 @@
 
 Open terminal and enter following commands.
 
-1. git clone https://github.com/manibharathytu/ezetap-book-my-show.git
+1. git clone https://github.com/manibharathytu/ezetap-book-my-show-server.git
 3. cd ezetap-book-my-show-server
 
 3. npm i
