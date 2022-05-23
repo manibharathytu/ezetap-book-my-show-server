@@ -1,14 +1,19 @@
-Steps to run :
-git clone https://github.com/manibharathytu/ezetap-book-my-show.git
+**Steps to run :**
 
-Cd to the folder
+Open terminal and enter following commands.
 
-npm i 
+1. git clone https://github.com/manibharathytu/ezetap-book-my-show.git
+3. cd ezetap-book-my-show-server
 
-sudo npm start
+3. npm i
+
+4. sudo npm start
 
 
 
 ---
 
-node version v14.15.5
+
+***Pre requisite:***
+
+node v14.15.5
