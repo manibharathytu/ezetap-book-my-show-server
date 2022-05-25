@@ -2,6 +2,8 @@
 var util = require('util');
 var encoder = new util.TextEncoder('utf-8');
 
+var path = require('path');
+
 var express = require('express');
 var app = express();
 bodyParser = require('body-parser');
@@ -17,6 +19,8 @@ app.use(cookieParser());
 // var db = require('../junk/db.js')
 // // var dbC = require('./dbConnect.js')
 
+// app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "http://localhost:4200");
