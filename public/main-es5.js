@@ -1422,7 +1422,7 @@
                     this.setPieChartData();
                     // setTimeout(this.setDonutChartData, 10000) // this timeout set chart data is also not working for the same reson as api data update 
                     //#todo : the bottom code is not working. updating the chart data later is not updating in ui 
-                    this.http.post("https://localhost/getStats", { 'op': 'find', data: {} }, { withCredentials: true })
+                    this.http.post("https://ec2-34-220-8-225.us-west-2.compute.amazonaws.com/getStats", { 'op': 'find', data: {} }, { withCredentials: true })
                         .subscribe(function (data) {
                         _this.pieChartLabels = data[0].popGenre.Labels;
                         _this.pieChartData = data[0].popGenre.tickets;
@@ -1578,7 +1578,7 @@
                 };
                 MoviesListComponent.prototype.fetchAndFillMoviesData = function () {
                     var _this = this;
-                    this.http.post("https://localhost/crud", { 'op': 'find', data: {} }, { withCredentials: true })
+                    this.http.post("https://ec2-34-220-8-225.us-west-2.compute.amazonaws.com/crud", { 'op': 'find', data: {} }, { withCredentials: true })
                         .subscribe(function (data) {
                         MOVIE_DATA = data;
                         MOVIE_DATA = MOVIE_DATA.map(function (movie) { movie['button'] = ''; return movie; }); // just for the table button
@@ -1662,7 +1662,7 @@
                 };
                 MoviesListComponent.prototype.deleteMovie = function (movieName) {
                     var _this = this;
-                    this.http.post("https://localhost/crud", { 'op': 'delete', data: { name: movieName } }, { withCredentials: true })
+                    this.http.post("https://ec2-34-220-8-225.us-west-2.compute.amazonaws.com/crud", { 'op': 'delete', data: { name: movieName } }, { withCredentials: true })
                         .subscribe(function (data) {
                         if (data.result ==
                             'suc') {
@@ -1677,13 +1677,13 @@
                     ;
                     ;
                     // can send only the changed area, thats better?
-                    this.http.post("https://localhost/crud", { 'op': 'update', 'data': { name: movieData.name }, newData: movieData }, { withCredentials: true })
+                    this.http.post("https://ec2-34-220-8-225.us-west-2.compute.amazonaws.com/crud", { 'op': 'update', 'data': { name: movieData.name }, newData: movieData }, { withCredentials: true })
                         .subscribe(function (data) {
                     });
                 };
                 MoviesListComponent.prototype.addMovie = function (movieData) {
                     var _this = this;
-                    this.http.post("https://localhost/crud", { 'op': 'insert', 'data': movieData }, { withCredentials: true })
+                    this.http.post("https://ec2-34-220-8-225.us-west-2.compute.amazonaws.com/crud", { 'op': 'insert', 'data': movieData }, { withCredentials: true })
                         .subscribe(function (data) {
                         if (data.result ==
                             'suc') {
@@ -1870,7 +1870,7 @@
                 LoginPageComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     // this.appservice.changeCurrentPage("loginPage");
-                    this.http.post("https://localhost/isLoggedIn", {}, { withCredentials: true })
+                    this.http.post("https://ec2-34-220-8-225.us-west-2.compute.amazonaws.com/isLoggedIn", {}, { withCredentials: true })
                         .subscribe(function (data) {
                         if (data.result == 'suc') {
                             _this.appservice.changeLoginState("loggedIn");
@@ -1902,7 +1902,7 @@
                     if (!this.validate()) {
                         return;
                     }
-                    this.http.post("https://localhost/login", { uname: this.uname, pwd: this.pwd }, { withCredentials: true })
+                    this.http.post("https://ec2-34-220-8-225.us-west-2.compute.amazonaws.com/login", { uname: this.uname, pwd: this.pwd }, { withCredentials: true })
                         .subscribe(function (data) {
                         if (data.result == 'suc') {
                             _this.appservice.changeLoginState("loggedIn");
@@ -2079,7 +2079,7 @@
                 }
                 TopBarComponent.prototype.isLoggedInCheck = function () {
                     var _this = this;
-                    this.http.post("https://localhost/isLoggedIn", {}, { withCredentials: true })
+                    this.http.post("https://ec2-34-220-8-225.us-west-2.compute.amazonaws.com/isLoggedIn", {}, { withCredentials: true })
                         .subscribe(function (data) {
                         console.log(data);
                         if (data.result == 'suc') {
@@ -2128,7 +2128,7 @@
                         // this.isLoggedIn = "loginPage";;
                     }
                     else {
-                        this.http.post("https://localhost/logout", {}, { withCredentials: true })
+                        this.http.post("https://ec2-34-220-8-225.us-west-2.compute.amazonaws.com/logout", {}, { withCredentials: true })
                             .subscribe(function (data) {
                             console.log(data);
                             if (data.result == 'suc') {

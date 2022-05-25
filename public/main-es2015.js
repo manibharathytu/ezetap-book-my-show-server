@@ -1505,7 +1505,7 @@ let DashboardPageComponent = class DashboardPageComponent {
         this.setPieChartData();
         // setTimeout(this.setDonutChartData, 10000) // this timeout set chart data is also not working for the same reson as api data update 
         //#todo : the bottom code is not working. updating the chart data later is not updating in ui 
-        this.http.post("https://localhost/getStats", { 'op': 'find', data: {} }, { withCredentials: true })
+        this.http.post("https://ec2-34-220-8-225.us-west-2.compute.amazonaws.com/getStats", { 'op': 'find', data: {} }, { withCredentials: true })
             .subscribe(data => {
             this.pieChartLabels = data[0].popGenre.Labels;
             this.pieChartData = data[0].popGenre.tickets;
@@ -1670,7 +1670,7 @@ let MoviesListComponent = class MoviesListComponent {
         });
     }
     fetchAndFillMoviesData() {
-        this.http.post("https://localhost/crud", { 'op': 'find', data: {} }, { withCredentials: true })
+        this.http.post("https://ec2-34-220-8-225.us-west-2.compute.amazonaws.com/crud", { 'op': 'find', data: {} }, { withCredentials: true })
             .subscribe(data => {
             MOVIE_DATA = data;
             MOVIE_DATA = MOVIE_DATA.map((movie) => { movie['button'] = ''; return movie; }); // just for the table button
@@ -1750,7 +1750,7 @@ let MoviesListComponent = class MoviesListComponent {
         });
     }
     deleteMovie(movieName) {
-        this.http.post("https://localhost/crud", { 'op': 'delete', data: { name: movieName } }, { withCredentials: true })
+        this.http.post("https://ec2-34-220-8-225.us-west-2.compute.amazonaws.com/crud", { 'op': 'delete', data: { name: movieName } }, { withCredentials: true })
             .subscribe(data => {
             if (data.result ==
                 'suc') {
@@ -1765,12 +1765,12 @@ let MoviesListComponent = class MoviesListComponent {
         ;
         ;
         // can send only the changed area, thats better?
-        this.http.post("https://localhost/crud", { 'op': 'update', 'data': { name: movieData.name }, newData: movieData }, { withCredentials: true })
+        this.http.post("https://ec2-34-220-8-225.us-west-2.compute.amazonaws.com/crud", { 'op': 'update', 'data': { name: movieData.name }, newData: movieData }, { withCredentials: true })
             .subscribe(data => {
         });
     }
     addMovie(movieData) {
-        this.http.post("https://localhost/crud", { 'op': 'insert', 'data': movieData }, { withCredentials: true })
+        this.http.post("https://ec2-34-220-8-225.us-west-2.compute.amazonaws.com/crud", { 'op': 'insert', 'data': movieData }, { withCredentials: true })
             .subscribe(data => {
             if (data.result ==
                 'suc') {
@@ -1983,7 +1983,7 @@ let LoginPageComponent = class LoginPageComponent {
     }
     ngOnInit() {
         // this.appservice.changeCurrentPage("loginPage");
-        this.http.post("https://localhost/isLoggedIn", {}, { withCredentials: true })
+        this.http.post("https://ec2-34-220-8-225.us-west-2.compute.amazonaws.com/isLoggedIn", {}, { withCredentials: true })
             .subscribe(data => {
             if (data.result == 'suc') {
                 this.appservice.changeLoginState("loggedIn");
@@ -2014,7 +2014,7 @@ let LoginPageComponent = class LoginPageComponent {
         if (!this.validate()) {
             return;
         }
-        this.http.post("https://localhost/login", { uname: this.uname, pwd: this.pwd }, { withCredentials: true })
+        this.http.post("https://ec2-34-220-8-225.us-west-2.compute.amazonaws.com/login", { uname: this.uname, pwd: this.pwd }, { withCredentials: true })
             .subscribe(data => {
             if (data.result == 'suc') {
                 this.appservice.changeLoginState("loggedIn");
@@ -2218,7 +2218,7 @@ let TopBarComponent = class TopBarComponent {
         this.showTopBar = true;
     }
     isLoggedInCheck() {
-        this.http.post("https://localhost/isLoggedIn", {}, { withCredentials: true })
+        this.http.post("https://ec2-34-220-8-225.us-west-2.compute.amazonaws.com/isLoggedIn", {}, { withCredentials: true })
             .subscribe(data => {
             console.log(data);
             if (data.result == 'suc') {
@@ -2265,7 +2265,7 @@ let TopBarComponent = class TopBarComponent {
             // this.isLoggedIn = "loginPage";;
         }
         else {
-            this.http.post("https://localhost/logout", {}, { withCredentials: true })
+            this.http.post("https://ec2-34-220-8-225.us-west-2.compute.amazonaws.com/logout", {}, { withCredentials: true })
                 .subscribe(data => {
                 console.log(data);
                 if (data.result == 'suc') {
